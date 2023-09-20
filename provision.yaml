@@ -1,0 +1,27 @@
+---
+- name: Deploy Apache web application
+  hosts: web-servers
+  become: yes
+  tasks:
+    - name: Pull the Docker image
+      docker_image:
+        name: docker.io/ubuntu123am/my-apache-image
+        source: pull
+        state: present
+
+    - name: Stop and remove the old container (if exists)
+      docker_container:
+        name: apache-container
+        state: stopped
+        remove: yes
+      ignore_errors: yes
+
+    - name: Run the new Docker container
+      docker_container:
+        name: apache-container
+        image: ubuntu123am/my-apache-image
+        ports:
+          - "88:80"
+        restart_policy: always
+
+    # Add other deployment tasks as needed
