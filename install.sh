@@ -6,5 +6,4 @@ sudo add-apt-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
 sudo swapoff -a
 sudo apt update
 sudo apt install -y kubelet kubeadm kubectl
-sudo su 
-Kubeadm init 
+
