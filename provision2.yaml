@@ -1,0 +1,10 @@
+---
+- name: Deploy Apache web application
+  hosts: web-servers
+  become: yes
+  tasks:
+    - name: Pull the Docker image
+      docker_image:
+        name: docker.io/ubuntu123am/my-apache-image
+        source: pull
+        state: present
