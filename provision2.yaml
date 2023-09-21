@@ -1,6 +1,6 @@
 ---
 - name: Deploy Apache web application
-  hosts: slave1
+  hosts: localhost
   become: yes
   tasks:
     - name: Pull the Docker image
